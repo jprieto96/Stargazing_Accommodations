@@ -1,0 +1,33 @@
+#home-title {
+    padding: 25px;
+    font-family: 'Zen Kurenaido';
+}
+
+.container {
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.card {
+    margin: 15px;
+}
+
+a {
+    color: #0f6a6d;
+    font-family: 'Zen Kurenaido', sans-serif;
+    margin: 10px 20px;
+    text-decoration: none;
+}
+
+footer {
+    bottom: 0;
+}
+
+.copyright {
+    color: #EAF6F6;
+    font-size: 0.9rem;
+    padding: 10px 0;
+    margin-bottom: 0;
+    text-align: center;
+}
