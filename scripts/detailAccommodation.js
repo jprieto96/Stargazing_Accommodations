@@ -8,7 +8,7 @@ var elemHTML = '<h1 class="container"><i>' + item.displayName + '</i> Accommodat
 elemHTML += '<div class="card text-center border-info mb-3">';
 elemHTML += '<div class="row g-0">';
 elemHTML += '<div class="col-md-4">';
-elemHTML += '<img src=' + item.image + ' class="img-fluid rounded-start" alt=' + item.displayName + '>';
+elemHTML += '<img src=' + item.image + ' width="400px" height="700px" class="img-fluid rounded-start" alt=' + item.displayName + '>';
 elemHTML += '</div>';
 elemHTML += '<div class="col-md-8">';
 elemHTML += '<div class="card-body">';
