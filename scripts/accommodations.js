@@ -127,17 +127,17 @@ const dataJSON =
 
 	{
 		"ItemID":"i7",
-		"displayName": "Soneva Jani", 
+		"displayName": "Vik Vhile", 
 		"openingTimes" :"24 hours",
-		"area": "Medhufaru Island, Maldives",
-		"facilities": "retractabe roofs, island resort",
-		"Address" : "Noonu Atoll, Medhufaru, Maldivas",
+		"area": "Millahue, San Vicente de Tagua Tagua, Chile",
+		"facilities": "floor-to-ceiling windows, wine tasting, hiking, lolling",
+		"Address" : "Avda. Alonso de Córdova 5320, Oficina 301, Las Condes, Santiago de Chile, Chile",
 		"postCode": "PC77",
-		"tags": "bestGeographicalPosition, islandResort",
-		"telephone": "(960) 656 6666",
-		"description": "At Soneva Jani in the Maldives' Noonu Atoll, star buffs have the opportunity to see constellations in both the Northern and Southern hemispheres. The resort has taken advantage of its unique geographical position, far from light pollution. Over-water bungalows have been designed with retractable roofs. Lie together in the master bedroom, entranced by the night sky. Don’t worry: At the first sign of rain, the roof automatically slides shut. Enjoy, too, the resort’s James Bond–inspired observatory, where a 16-inch Meade telescope and 3D technology elucidate the secrets of the sky.",
+		"tags": "bestGeographicalPosition, floor-to-ceiling windows",
+		"telephone": "+56 9 5668 4853",
+		"description": "They call the region Vik Chile in Chile’s Millahue Valley the “place of gold,” but the treasure trove only increases at night when the stars come out. Designed by Alexander and Carrie Vik in association with architect Marcelo Daglio, the 11-suite property perches on a hilltop, with arching views of the vineyards. At night, floor-to-ceiling windows reveal a peerless moonlit spectacle. During daylight, enjoy wine tasting, hiking, and lolling about in the spa.",
 		"latLong" : {"lat": "", "lng": ""}, // do not remove this catergory as you might need it for assignment 2 
-		"image": "images/sonevaJani.jpg"
+		"image": "images/vikChile.jpg"
 		// add or remove catergories as appropriate, justification for the same should be included in reflection
 	}
 
