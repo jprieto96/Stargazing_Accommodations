@@ -1,3 +1,15 @@
+
+/* General style for all links of the website */
+
+a {
+    color: #0f6a6d;
+    font-family: 'Zen Kurenaido', sans-serif;
+    margin: 10px 20px;
+    text-decoration: none;
+}
+
+/* Main container styles */
+
 #home-title {
     padding: 25px;
     font-family: 'Zen Kurenaido';
@@ -19,12 +31,7 @@
     object-fit: cover;
 }
 
-a {
-    color: #0f6a6d;
-    font-family: 'Zen Kurenaido', sans-serif;
-    margin: 10px 20px;
-    text-decoration: none;
-}
+/* Footer styles */
 
 footer {
     bottom: 0;

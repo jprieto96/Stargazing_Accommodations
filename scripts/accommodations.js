@@ -2,7 +2,8 @@ const dataJSON =
 {
 "mainCategory": "Stargazing Accommodations",
 "localAuthority":" ", 
-"area":[],
+"area":["Mamin, Saint Lucia", "Amangiri, Utah", "Lima, Perú", "Fuji, Japan", "Kapolei, Hawai, US.", "California, US", "Millahue, San Vicente de Tagua Tagua, Chile",
+				"Entre Cielos Guardia Vieja 1998 Luján de Cuyo, Mendoza, Argentina", "Colorado, US", "Australia"],
 "itemNames":["item1", "item2", "item3", "item4", "item5", "item6", "item7", "item8", "item9", "item10"],	
 "item1":[
 
@@ -14,7 +15,7 @@ const dataJSON =
 		"facilities": "personal interior, swimming pools, views of the island",
 		"Address" : "Soufriere, St. Lucia, West Indies",
 		"postCode": "P O Box 4000",
-		"tags": "",
+		"tags": "western",
 		"telephone": "(+44) (0)208 339 6888",
 		"description": "Owner-architect Nick Troubetzkoy calls the suites he designed for his abstract resort on St. Lucia’s southwestern coast “sanctuaries.” Commodious, with personal interior swimming pools, and views of the island nation’s iconic Pitons, they fit that name. But these rooms, configured with one wall open to frame the view, might also be termed “star sanctums” for the way they embrace the night sky.",
 		"latLong" : {"lat": "", "lng": ""}, // do not remove this catergory as you might need it for assignment 2 
@@ -34,7 +35,7 @@ const dataJSON =
 		"facilities": "Private sky terrace, pumpkin-colored hoodoos, saffron boulders, and lacelike slot canyons",
 		"Address" : "1 Kayenta Road",
 		"postCode": "84741-0285 UT",
-		"tags": "",
+		"tags": "desert, canyons",
 		"telephone": "+ 65 3165 4865",
 		"description": "Pumpkin-colored hoodoos, saffron boulders, and lacelike slot canyons compose the desert terrain that surrounds Amangiri, near Lake Powell. Designed to meld into the landscape, Amangiri can barely be spotted from a distance. It seems to disappear—just like an oasis. After a day challenging yourself on the resort’s famous via ferratas, bring your heart rate down as you dream on your private sky terrace. Atop the roof of the Mesa and Desert Pool Suites, this outdoor bed gets better with Champagne and s’mores.",
 		"latLong" : {"lat": "", "lng": ""}, // do not remove this catergory as you might need it for assignment 2 
@@ -54,7 +55,7 @@ const dataJSON =
 		"facilities": "Remotely situated and rustic, luxury place, treehouse",
 		"Address" : "Andalucía 174, Miraflores",
 		"postCode": "15074",
-		"tags": "",
+		"tags": "amazonas, treehouse",
 		"telephone": "+51 1 610 0400",
 		"description": "If you can’t climb a tree—sleep among some. Spend the night at Inkaterra's Canopy Treehouse, built on a platform 73 feet above the Peruvian Amazon. Remotely situated and rustic, but luxuriously appointed, this cabana comes with staff, ensconced below—and a ground level escape hut for those with second thoughts. After your chef serves dinner, sit back to gander at the sky’s spectacle. In the morning, prepare to enjoy the resort’s many amenities.",
 		"latLong" : {"lat": "", "lng": ""}, // do not remove this catergory as you might need it for assignment 2 
