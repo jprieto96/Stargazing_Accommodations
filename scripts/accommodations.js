@@ -9,17 +9,17 @@ const dataJSON =
 
      {
 		"ItemID":"i1",
-		"displayName": "Jade Mountain", 
-		"openingTimes" :"10am",
-		"area": "Mamin, Saint Lucia",
-		"facilities": "personal interior, swimming pools, views of the island",
-		"Address" : "Soufriere, St. Lucia, West Indies",
-		"postCode": "P O Box 4000",
-		"tags": "western",
-		"telephone": "(+44) (0)208 339 6888",
-		"description": "Owner-architect Nick Troubetzkoy calls the suites he designed for his abstract resort on St. Lucia’s southwestern coast “sanctuaries.” Commodious, with personal interior swimming pools, and views of the island nation’s iconic Pitons, they fit that name. But these rooms, configured with one wall open to frame the view, might also be termed “star sanctums” for the way they embrace the night sky.",
+		"displayName": "Colliford Lake Park", 
+		"openingTimes" :"15 March – 12 October",
+		"area": "Bodmin Moor",
+		"facilities": "Exceptional views",
+		"Address" : "St Neot Liskeard Cornwall",
+		"postCode": "PL14 6PL",
+		"tags": "Lake, nature reserve",
+		"telephone": "01566 771930",
+		"description": "Colliford Lake Park is a nature reserve located in the very heart of Bodmin Moor and easy access from the A30. Ample public parking with picnic areas and lakeside walks allow you to find that perfect stargazing spot. With wide expansive skies and being away from light pollution this makes for an excellent place to spot meteors and see the Milky Way in all of its glory!",
 		"latLong" : {"lat": "", "lng": ""}, // do not remove this catergory as you might need it for assignment 2 
-		"image": "images/jadeMountain.jpg" // include more than one image for details page
+		"image": "images/collfifordlakes.jpg" // include more than one image for details page
 		// add or remove catergories as appropriate, justification for the same should be included in reflection
     }
 
@@ -29,17 +29,17 @@ const dataJSON =
 
     {
 		"ItemID":"i2",
-		"displayName": "Amangiri", 
-		"openingTimes" :"10am",
-		"area": "Amangiri, Utah",
-		"facilities": "Private sky terrace, pumpkin-colored hoodoos, saffron boulders, and lacelike slot canyons",
-		"Address" : "1 Kayenta Road",
+		"displayName": "Kingfishers Holidays", 
+		"openingTimes" :"24h",
+		"area": "Charmouth",
+		"facilities": "Self catering accommodation",
+		"Address" : "Newlands Bridge, Charmouth",
 		"postCode": "84741-0285 UT",
-		"tags": "desert, canyons",
-		"telephone": "+ 65 3165 4865",
-		"description": "Pumpkin-colored hoodoos, saffron boulders, and lacelike slot canyons compose the desert terrain that surrounds Amangiri, near Lake Powell. Designed to meld into the landscape, Amangiri can barely be spotted from a distance. It seems to disappear—just like an oasis. After a day challenging yourself on the resort’s famous via ferratas, bring your heart rate down as you dream on your private sky terrace. Atop the roof of the Mesa and Desert Pool Suites, this outdoor bed gets better with Champagne and s’mores.",
+		"tags": "Accommodation",
+		"telephone": "07561 308387",
+		"description": "Located in an Area of Outstanding Natural Beauty this lovely self-catering accommodation is an ideal base to explore the Jurassic Coast and the stars in the dark night sky.",
 		"latLong" : {"lat": "", "lng": ""}, // do not remove this catergory as you might need it for assignment 2 
-		"image": "images/Amangiri.jpg"
+		"image": "images/Kingfishers.jpg"
 		// add or remove catergories as appropriate, justification for the same should be included in reflection
     },
 
@@ -49,17 +49,17 @@ const dataJSON =
 
     {
 		"ItemID":"i3",
-		"displayName": "Inkaterra Reserva Amazonica", 
-		"openingTimes" :"10am",
-		"area": "Lima, Perú",
-		"facilities": "Remotely situated and rustic, luxury place, treehouse",
-		"Address" : "Andalucía 174, Miraflores",
-		"postCode": "15074",
-		"tags": "amazonas, treehouse",
-		"telephone": "+51 1 610 0400",
-		"description": "If you can’t climb a tree—sleep among some. Spend the night at Inkaterra's Canopy Treehouse, built on a platform 73 feet above the Peruvian Amazon. Remotely situated and rustic, but luxuriously appointed, this cabana comes with staff, ensconced below—and a ground level escape hut for those with second thoughts. After your chef serves dinner, sit back to gander at the sky’s spectacle. In the morning, prepare to enjoy the resort’s many amenities.",
+		"displayName": "Pontithel Lodges", 
+		"openingTimes" :"24h",
+		"area": "Brecon",
+		"facilities": "Large decking area",
+		"Address" : "Pontithel, Brecon",
+		"postCode": "LD3 0SA",
+		"tags": "Black mountains",
+		"telephone": "N/A",
+		"description": "Enjoy views of the Black Mountains, Hay Bluff, Langorse Mountain as well as the fabulous dark skies from your own large decking area.",
 		"latLong" : {"lat": "", "lng": ""}, // do not remove this catergory as you might need it for assignment 2 
-		"image": "images/Inkaterra.jpg"
+		"image": "images/Pontithel.jpg"
 		// add or remove catergories as appropriate, justification for the same should be included in reflection
     },
 ],
@@ -68,17 +68,17 @@ const dataJSON =
 
 	{
 		"ItemID":"i4",
-		"displayName": "Hoshinoya Fuji", 
-		"openingTimes" :"10:00 - 18:00 / JPN TIME",
-		"area": "Fuji, Japan",
-		"facilities": "Cabins point toward the vista like spyglasses to capture the view.",
-		"Address" : "1408 Oishi, Fujikawaguchiko, Minamitsuru District, Japan",
-		"postCode": "401-0305",
-		"tags": "cabin, fuji, japan",
-		"telephone": "+81-50-3786-1144",
-		"description": "Forest bathing doesn’t have to be done in daylight. The night can soothe your soul, too. Rie Azuma designed Hoshinoya Fuji to blur the boundaries between indoors and outdoors any time of the day. Facing Mt. Fuji and Lake Kawaguchi, elongated, sleek, cabins point toward the vista like spyglasses to capture the view. Enjoy location-appropriate activities, such as woodcutting and canoeing, by day, then retreat to your deck after dark for the ultimate star shower.",
+		"displayName": "Caban Dan Y Ser (Cabin under the Stars)", 
+		"openingTimes" :"24h",
+		"area": "Bronaber",
+		"facilities": "Fabolous cabins",
+		"Address" : "Bronaber, Snowdonia",
+		"postCode": "LL41 4YB",
+		"tags": "cabins",
+		"telephone": "N/A",
+		"description": "Enjoy a fabulous stargazing break in Snowdonia Dark Sky Park in this cosy Scandinavian style pine log cabin!",
 		"latLong" : {"lat": "", "lng": ""}, // do not remove this catergory as you might need it for assignment 2 
-		"image": "images/Hoshinoya.jpg"
+		"image": "images/cabandanyser.jpeg"
 		// add or remove catergories as appropriate, justification for the same should be included in reflection
 	},
 
@@ -88,17 +88,17 @@ const dataJSON =
 
 	{
 		"ItemID":"i5",
-		"displayName": "Four Seasons Resort Oahu at Ko Olina", 
+		"displayName": "Llanfair Hall", 
 		"openingTimes" :"24 hours",
-		"area": "Kapolei, Hawai, US.",
-		"facilities": "expansive property, premium beds",
-		"Address" : "92-1001 Olani St, Kapolei, Estados Unidos",
-		"postCode": "96707",
-		"tags": "Hawai, astronomy",
-		"telephone": "+18086790079",
-		"description": "Far from the buzz of Waikiki, on Oahu’s less trammelled western side, Four Seasons Oahu Ko Olina revels in its location, long considered sacred to Hawaiian royalty. An expansive property, which sits beside Lanikuhonua, a beachside cultural treasure, the resort deeply embraces the Hawaiian spirit. Give your children the opportunity to hear Hawaiians discuss the role astronomy plays in their culture at an on-property overnight, beneath the stars. Four Seasons’ premium beds, memories, and star power go without saying.",
+		"area": "Anglesey",
+		"facilities": "Own individual wet room, personal barbecue fire pit, Freeview TV/DVD, sumptuous 100% cotton bedlinen and towels",
+		"Address" : "Dwyran, Llanfairpwllgwyngyll, Anglesey",
+		"postCode": "LL61 6AX",
+		"tags": "Away from the world",
+		"telephone": "01248 440031",
+		"description": "Nestled in the Welsh countryside, Llanfair Hall is only 8 miles from the A55, 16 miles from the edge of Snowdonia and boasts 5* and Gold rated glamping pods on Anglesey while being awarded the AA’s UK Glamping Site of the year for 2019-2020. You’ll have your own individual wet room, personal barbecue fire pit, Freeview TV/DVD, sumptuous 100% cotton bedlinen and towels – everything you need for glamorous camping with the highest possible specifications! Further options include an amazing log cabin and most superb 1720s barn conversion.",
 		"latLong" : {"lat": "", "lng": ""}, // do not remove this catergory as you might need it for assignment 2 
-		"image": "images/fourseasons.jpg"
+		"image": "images/llanfair-hall.jpg"
 		// add or remove catergories as appropriate, justification for the same should be included in reflection
 	}
 
@@ -108,17 +108,17 @@ const dataJSON =
 
 	{
 		"ItemID":"i6",
-		"displayName": "Classic Journeys", 
-		"openingTimes" :"Our office hours are 8 a.m. to 5 p.m. PDT Monday – Friday.",
-		"area": "California, US",
-		"facilities": "Organized trip of 9 days to India, indian culture, private bath and pool",
-		"Address" : "7855 Ivanhoe Avenue, Suite 220 La Jolla",
-		"postCode": "CA 92037",
-		"tags": "tripIndia, indianCulture",
-		"telephone": "+1-858-454-5004",
-		"description": "Sleep tight in Rajasthan, India’s most colorful state. On a Classic Journeys India Culture and Walking Tour, day five takes you to Pushkar, a holy pilgrimage site, and home to 400 sky-blue temples and more than 50 bathing ghats. To the background sounds of chanting, camp out amidst a field of roses in a luxury tent, complete with private bath and pool. An alfresco dinner competes with the starry skies.",
+		"displayName": "Galloway Astronomy Centre", 
+		"openingTimes" :"24h",
+		"area": "Craiglemine Cottage, Glasserton",
+		"facilities": "Astronomy Centre",
+		"Address" : "Craiglemine Cottage, Whithorn",
+		"postCode": "DG8 8NE",
+		"tags": "South West Scotland",
+		"telephone": "01988 500594",
+		"description": "Enjoy a stargazing break at the Galloway Astronomy Centre and experience the fabulous dark skies of South West Scotland! From the on-site observatory, home to a huge 16″ reflecting telescope, guests can enjoy tours of the heavens viewing distant objects, including galaxies and nebulae. Non-residents may also book private tours in advance, which can be tailor-made to meet your level of experience and interests.",
 		"latLong" : {"lat": "", "lng": ""}, // do not remove this catergory as you might need it for assignment 2 
-		"image": "images/classicjourneys.jpg"
+		"image": "images/galloway.jpg"
 		// add or remove catergories as appropriate, justification for the same should be included in reflection
 	}
 
@@ -128,17 +128,17 @@ const dataJSON =
 
 	{
 		"ItemID":"i7",
-		"displayName": "Vik Vhile", 
+		"displayName": "Knoydart Hide", 
 		"openingTimes" :"24 hours",
-		"area": "Millahue, San Vicente de Tagua Tagua, Chile",
-		"facilities": "floor-to-ceiling windows, wine tasting, hiking, lolling",
-		"Address" : "Avda. Alonso de Córdova 5320, Oficina 301, Las Condes, Santiago de Chile, Chile",
-		"postCode": "PC77",
-		"tags": "bestGeographicalPosition, floor-to-ceiling windows",
-		"telephone": "+56 9 5668 4853",
-		"description": "They call the region Vik Chile in Chile’s Millahue Valley the “place of gold,” but the treasure trove only increases at night when the stars come out. Designed by Alexander and Carrie Vik in association with architect Marcelo Daglio, the 11-suite property perches on a hilltop, with arching views of the vineyards. At night, floor-to-ceiling windows reveal a peerless moonlit spectacle. During daylight, enjoy wine tasting, hiking, and lolling about in the spa.",
+		"area": "Inverie, Knoydart",
+		"facilities": "Luxury self-catering accommodation with outdoor hot tub",
+		"Address" : "Knoydart Hide, Inverie, Knoydart, Mallaig",
+		"postCode": "PH41 4PL",
+		"tags": "Luxury",
+		"telephone": "01687 460012",
+		"description": "Knoydart Hide offers luxury self-catering accommodation with outdoor hot tub in a beautiful and secluded woodland setting overlooking Loch Nevis. A fantastic location to explore the local area and look up at the dark skies above. Stargazing guided tours available.",
 		"latLong" : {"lat": "", "lng": ""}, // do not remove this catergory as you might need it for assignment 2 
-		"image": "images/vikChile.jpg"
+		"image": "images/knoydart.jpg"
 		// add or remove catergories as appropriate, justification for the same should be included in reflection
 	}
 
@@ -148,17 +148,17 @@ const dataJSON =
 
 	{
 		"ItemID":"i8",
-		"displayName": "Entre Cielos", 
+		"displayName": "Raworths Retreat at Burn Cottage", 
 		"openingTimes" :"24 hours",
-		"area": "Entre Cielos Guardia Vieja 1998 Luján de Cuyo, Mendoza, Argentina",
-		"facilities": "Vineyard Loft",
-		"Address" : "Guardia Vieja 1998, Vistalba, Luján de Cuyo, Argentina",
-		"postCode": "M5509",
-		"tags": "smallLuxuryHotel",
-		"telephone": "+54 92613611439",
-		"description": "For oenophiles, sleeping in a vineyard ranks as a dream. Take that romantic experience up a notch at Entre Cielos, a Small Luxury Hotel, set in Argentina’s Mendoza region. It offers the Vineyard Loft, which stands on stilts above the vines. Glass walls usher in the terroir, a window in the ceiling displays a panorama of stars, and an outdoor bathtub soothes at day’s end. When not dropping your jaw over astronomical sights, avail yourself of the hotel’s own three wine labels and a spa with a wine bath.",
+		"area": "Laundry Road",
+		"facilities": "Two bed self-catering cottage",
+		"Address" : "Laundry Road, Lairg",
+		"postCode": "IV27 4DE",
+		"tags": "Rural village",
+		"telephone": "0345 268 1786",
+		"description": "This lovely cosy, modern two bed self-catering cottage that sleeps four is located in the quiet rural village of Lairg and a perfect base to explore the surrounding area and the dark, starry skies above.",
 		"latLong" : {"lat": "", "lng": ""}, // do not remove this catergory as you might need it for assignment 2 
-		"image": "images/entreCielos.jpg"
+		"image": "images/raworths.jpg"
 		// add or remove catergories as appropriate, justification for the same should be included in reflection
 	}
 
@@ -168,17 +168,17 @@ const dataJSON =
 
 	{
 		"ItemID":"i9",
-		"displayName": "Dunton River Camp", 
+		"displayName": "Birdsong Cottage", 
 		"openingTimes" :"24 hours",
-		"area": "Colorado, US",
-		"facilities": "Eight luxurious canvas tents",
-		"Address" : "50014 Road 38, Dolores, Estados Unidos",
-		"postCode": "CO 81323",
-		"tags": "coloradoStarExperience",
-		"telephone": "+18772889922",
-		"description": "Back in the day, people unfurled a blanket on the lawn and gathered beneath the stars on summer nights to watch the night sky come alive. That’s the vibe at Cresto Ranch, where Dunton River Camp holds eight luxurious canvas tents, wedged amid pines in the Colorado Rockies. Ideal for canoodling beneath the stars, the tents take the place of that blanket of yore, their door drawing in the moonlight. Spend your days dipping into the resort’s healing hot springs.",
+		"area": "Alnwick",
+		"facilities": "Luxury en-suite, large balcony",
+		"Address" : "Brownieside, Alnwick",
+		"postCode": "NE67 5HW",
+		"tags": "Luxury",
+		"telephone": "01665 517284",
+		"description": "Enjoy a stargazing break to Northumberland at this luxury en-suite B&B near Alnwick. Their “Haven Suite” has a large balcony ideal for dark sky stargazing, relaxing & sea view!",
 		"latLong" : {"lat": "", "lng": ""}, // do not remove this catergory as you might need it for assignment 2 
-		"image": "images/duntonRiver.jpg"
+		"image": "images/birdsong.jpg"
 		// add or remove catergories as appropriate, justification for the same should be included in reflection
 	}
 
@@ -188,17 +188,17 @@ const dataJSON =
 
 	{
 		"ItemID":"i10",
-		"displayName": "Kangaluna Camp", 
+		"displayName": "Cropton Cabins Holiday Park", 
 		"openingTimes" :"24 hours",
-		"area": "Australia",
-		"facilities": "3 canvas eco-luxe wilderness tents & a converted canvas wagon",
-		"Address" : "Wudinna, South Australia",
-		"postCode": "5652",
-		"tags": "exo-friendly accommodation",
-		"telephone": "0428 827 375",
-		"description": "Further-flung South Australia’s Eyre Peninsula has miles of wild stretches. Anchor yourself in Gawler Ranges National Park, a melange of gullies and gorges. Celebrated for its geology and wildlife, this area defines solace and quietude. Experience nature’s architecture at Kangaluna Camp, where a “swagon” awaits. This renovated wagon with a swag (that’s Australian for canvas bedroll) bed means you sleep staring at the stars. The eight-inch computer-controlled telescope at the camp magnifies planets, making them seem close enough to touch.",
+		"area": "Cropton",
+		"facilities": "Cabin at North York Moors National Park",
+		"Address" : "Cropton, Wrelton",
+		"postCode": "YO18 8ES",
+		"tags": "Cabins",
+		"telephone": "03330 110 495",
+		"description": "Enjoy a stargazing break at the fantastic Cropton Cabins located under the darkest of skies in the North York Moors National Park! This venue has adapted its lighting to reduce light pollution protecting not just the environment but also the enjoyment of the starry skies above. Set amongst an expanse of natural woodland the well appointed cabins (some of which include a hot tub!) offer an amazing retreat for families and couples!",
 		"latLong" : {"lat": "", "lng": ""}, // do not remove this catergory as you might need it for assignment 2 
-		"image": "images/kangaluna.jpg"
+		"image": "images/cropton.jpg"
 		// add or remove catergories as appropriate, justification for the same should be included in reflection
 	}
 
