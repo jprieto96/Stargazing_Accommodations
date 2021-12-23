@@ -1,5 +1,41 @@
-
 /* General style for all links of the website */
+
+body{
+    font-family: 'Zen Kurenaido', sans-serif;
+}
+
+/* Titles of the webpage */
+
+.lines-effect {
+    display: inline-block;
+    position: relative;
+    font-family: 'Dancing Script', cursive;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.lines-effect::after, h1::before {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 3px;
+    background-color: currentColor;
+    top: 0.6em;
+    transform: scale(0);
+    transition: all 0.2s ease-in;
+}
+
+.lines-effect:hover::before, h1:hover::after {
+    transform: scale(1);
+}
+
+.lines-effect::before {
+    left: -140px;
+}
+
+.lines-effect::after {
+    right: -140px;
+}
 
 a {
     color: #0f6a6d;
@@ -9,11 +45,6 @@ a {
 }
 
 /* Main container styles */
-
-#home-title {
-    padding: 25px;
-    font-family: 'Zen Kurenaido';
-}
 
 .container {
     text-align: center;
@@ -29,6 +60,25 @@ a {
     width: 100%;
     height: 30vw;
     object-fit: cover;
+}
+
+/* Map style */
+
+#map { 
+    margin: 20;
+    height: 500px;
+}
+
+/* Filter style */
+
+.filter-fields {
+    margin: 10;
+    padding: 10;
+    border-radius: 5%;
+}
+
+#reset-btn {
+    margin: 10;
 }
 
 /* Footer styles */

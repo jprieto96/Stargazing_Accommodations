@@ -5,9 +5,13 @@
 
     <title>Stargazing Accommodations</title>
 
+    <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&family=Montserrat&family=Sacramento&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 
     <!-- Adding a icon to the web page -->
     <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
@@ -19,6 +23,12 @@
 
     <!-- include icons using googleapis material icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Added Leaflet to include embeded maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
 
     <!-- script that contains the list of accommodations -->
     <script type="text/javascript" src="scripts/accommodations.js"></script>
@@ -48,7 +58,12 @@
       </div>
     </header>   
        
-    <div id="container" class="container"></div>
+    <div class="container">
+      <h1 class="lines-effect">Discover our new accommodations</h1>
+      <div id="container" class="card-container"></div>
+      <h1 class="lines-effect">Locations on map</h1>
+      <div id="map" class="map-container"></div>
+    </div>
 
     <footer id="footer">
       <div class="bottom-container bg-dark text-white">
