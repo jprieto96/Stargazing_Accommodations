@@ -13,10 +13,25 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 // Adding markers for each accommodation
 for(var item of dataJSON.itemNames) {
     var marker = L.marker([dataJSON[item].latLong.lat, dataJSON[item].latLong.lng]).addTo(map);
-    var popupHTML = "<b>" + dataJSON[item].displayName + "</b><br> <p>" + dataJSON[item].Address + "</p>";
+    var popupHTML = '<div class="container">';
+    popupHTML += '<p><b>' + dataJSON[item].displayName + '</b></p>';
+
+    var ls = JSON.parse(localStorage.getItem("ratingSystem_" + dataJSON[item].displayName));
+    // If we have reviews, we show the number of reviews we have
+    if(ls != null) {
+        popupHTML += '<p>' + ls.reviews.length + ' reviews</p>';
+        popupHTML += '<p>' + getRating(ls.averageRating) + '</p>';
+    }
+    else {
+        popupHTML += '<p>0 reviews</p>';
+        popupHTML += '<p>' + getRating(dataJSON[item].averageRating) + '</p>';
+    }
+    
+    popupHTML += '<button type="button" onclick=showDetail("' + item + '"); class="btn btn-primary">More details</button>'
     var tooltip = L.tooltip({
         permanent: false
-    }).setContent("Introduce rating");
+    }).setContent(dataJSON[item].Address);
+
     marker.bindPopup(popupHTML);
     marker.bindTooltip(tooltip);
 }
@@ -24,7 +39,8 @@ for(var item of dataJSON.itemNames) {
 // Adding the current location of the user with geolocation
 L.control.locate().addTo(map);
 
-
+// Add fullscreen mode
+map.addControl(new L.Control.Fullscreen());
 
 // Element in which I am going to add a carousel
 var element = document.getElementById("container");
@@ -53,13 +69,73 @@ for(var item of dataJSON.itemNames) {
 elemHTML += '</div>' +
             '<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">' +
             '<span class="carousel-control-prev-icon" aria-hidden="true"></span>' +
-            '<span class="visually-hidden">Previous</span>' +
             '</button>' +
             '<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">' +
             '<span class="carousel-control-next-icon" aria-hidden="true"></span>' +
-            '<span class="visually-hidden">Next</span>' +
             '</button>' +
             '</div>';
 
 // Introduce the carousel inside the container
 element.innerHTML = elemHTML;
+
+// function that puts the stars corresponding to the rating
+function getRating(rating) {
+    ratingHTML = '';
+    console.log(rating);
+    switch(rating) {
+        case 0: ratingHTML = '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                break;
+        case 1: ratingHTML = '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                break;
+        case 2: ratingHTML = '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                break;
+        case 3: ratingHTML = '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                break;
+        case 4: ratingHTML = '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                break;
+        case 5: ratingHTML = '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star checked"></span>';
+                break;
+        default:
+                ratingHTML = '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+    }
+
+    return ratingHTML;
+}
+
+/* 
+    function that is going to be called if the show details message is pressed
+    It receives the item name of the accommodation, so that it can then be easily accessed through the JSON 
+    The function open a new window, specifically detailpage.html and passes to this webpage a parameter
+    that is the item name of the accommodation 
+*/
+function showDetail(itemName) {
+	window.open("detailpage.html?id=" + itemName);
+} 

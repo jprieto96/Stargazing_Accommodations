@@ -1,9 +1,11 @@
+var ratedStars = 0;
+
 // Find the params that this web page receives
 const params = new URLSearchParams(window.location.search)  
 const id = params.get('id');
 
 // Element in which I am going to add the bootstrap card of the accommodation with all his details
-var element = document.getElementById("container");
+var element = document.querySelector(".card-container");
 // With the name of the item(id variable) I can access to the item
 var item = dataJSON[id];
 
@@ -30,11 +32,9 @@ for(var i = 1; i < item.image.length; ++i) {
 elemHTML += '</div>' +
             '<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">' +
             '<span class="carousel-control-prev-icon" aria-hidden="true"></span>' +
-            '<span class="visually-hidden">Previous</span>' +
             '</button>' +
             '<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">' +
             '<span class="carousel-control-next-icon" aria-hidden="true"></span>' +
-            '<span class="visually-hidden">Next</span>' +
             '</button>' +
             '</div>';
 
@@ -58,7 +58,7 @@ elemHTML += '</div>';
 element.innerHTML = elemHTML;
 
 // Adding the map with the location of the accommodation
-var map = L.map('map').setView([item.latLong.lat, item.latLong.lng], 8);
+var map = L.map('map').setView([item.latLong.lat, item.latLong.lng], 7);
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -70,12 +70,246 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 }).addTo(map);
 
 var marker = L.marker([item.latLong.lat, item.latLong.lng]).addTo(map);
-var popupHTML = "<b>" + item.displayName + "</b><br> <p>" + item.Address + "</p>";
+
 var tooltip = L.tooltip({
     permanent: false
-}).setContent("Introduce rating");
-marker.bindPopup(popupHTML);
+}).setContent(item.Address);
+
 marker.bindTooltip(tooltip);
 
 // Adding the current location of the user with geolocation
 L.control.locate().addTo(map);
+
+// Add fullscreen mode
+map.addControl(new L.Control.Fullscreen());
+
+// Element in which I am going to add the bootstrap card of the accommodation with all his details
+var review_element = document.querySelector(".review-container");
+var ls = JSON.parse(localStorage.getItem("ratingSystem_" + item.displayName));
+
+var review_HTML = '<div class="row justify-content-center mx-0 mx-md-auto">';
+review_HTML += '<div class="col-lg-10 col-md-11 px-1 px-sm-2">';
+review_HTML += '<div class="card border-0 px-3">';
+review_HTML += '<div class="d-flex row py-5 px-5 bg-light">';
+review_HTML += '<div id="tabOverallRating" class="p-2 px-3 mx-2">';
+review_HTML += '<p class="sm-text mb-0">OVERALL RATING</p>';
+if(ls != null) {
+        review_HTML += '<h4>' + ls.averageRating + '</h4>';
+}
+else {
+        review_HTML += '<h4>' + item.averageRating + '</h4>';
+}
+review_HTML += '</div>';
+review_HTML += '<div class="white-tab p-2 mx-2 text-muted">';
+review_HTML += '<p class="sm-text mb-0">ALL REVIEWS</p>';
+
+var reviews = [];
+// Get from the local storage the reviews
+if(ls != null) {
+        reviews = ls.reviews;
+}
+
+review_HTML += '<h4>' + reviews.length + '</h4>';
+review_HTML += '</div>';
+review_HTML += '<div class="white-tab p-2 mx-2">';
+review_HTML += '<p class="sm-text mb-0 text-muted">VERY POSITIVE REVIEWS</p>';
+
+var positiveReviews = 0;
+for(var i = 0; i < reviews.length; i++) {
+        if(reviews[i].stars > 3) ++positiveReviews;
+}
+var per = (positiveReviews / reviews.length) * 100;
+
+review_HTML += '<h4 id="textPositiveReviews">' + per + '%</h4>';
+review_HTML += '</div>';
+review_HTML += '<div class="ml-md-auto p-2 mx-md-2 pt-4 pt-md-3"> <button id="writeReviewButton" class="btn btn-blue px-4 review-trigger">WRITE A REVIEW</button> </div>';
+review_HTML += '</div>';
+
+console.log(reviews);
+// Show all the reviews stored on the local storage
+if(ls != null && reviews.length > 0) {
+        for(var i = 0; i < reviews.length; i++) {
+                review_HTML += '<div class="review p-5">';
+                review_HTML += '<div class="row d-flex">';
+                review_HTML += '<div class="profile-pic"></div>';
+                review_HTML += '<div class="d-flex flex-column pl-3">';
+                review_HTML += '<h4>' + reviews[i].user + '</h4>';
+                review_HTML += '</div>';
+                review_HTML += '</div>';
+                review_HTML += '<div class="row pb-3">';
+                review_HTML += getRating(reviews[i].stars);
+                review_HTML += '</div>';
+                review_HTML += '<div class="row pb-3">';
+                review_HTML += '<p>' + reviews[i].review + '</p>';
+                review_HTML += '</div>';
+                review_HTML += '</div>';
+        } 
+        review_HTML += '</div>';
+        review_HTML += '</div>';
+        review_HTML += '</div>';
+        review_HTML += '</div>';
+        review_HTML += '</div>';
+}
+
+review_element.innerHTML = review_HTML;
+
+var averageRating = 0;
+if(ls != null) {
+        averageRating = ls.averageRating;
+}
+else { 
+        averageRating = item.averageRating;
+}
+
+if(averageRating >= 3.5) $("#tabOverallRating").addClass('green-tab');
+else if(averageRating >= 2.5 ) $("#tabOverallRating").addClass('yellow-tab');
+else $("#tabOverallRating").addClass('red-tab');
+
+if(per >= 75) $("#textPositiveReviews").addClass('green-text');
+else if(per >= 50) $("#textPositiveReviews").addClass('yellow-text');
+else $("#textPositiveReviews").addClass('red-text');
+
+for(var i = 0; i < reviews.length; i++) {
+        $(".profile-pic")[i].style.backgroundColor = getRandomColor();
+}
+
+// Get the modal
+var modal = document.getElementById("reviewModal");
+
+// Get the button that opens the modal
+var reviewBtn = document.getElementById("writeReviewButton");
+
+var btnSendReview = document.getElementById("sendReview");
+
+// Get the <span> element that closes the modal
+var spanCloseModal = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+spanCloseModal.onclick = function() {
+        modal.style.display = "none";
+}
+
+// When the user clicks on the button, open the modal
+reviewBtn.onclick = function() {
+  modal.style.display = "flex";
+}
+
+function oneStar() {
+        ratedStars = 1;
+}
+
+function twoStars() {
+        ratedStars = 2;
+}
+
+function threeStars() {
+        ratedStars = 3;
+}
+
+function fourStars() {
+        ratedStars = 4;
+}
+
+function fiveStars() {
+        ratedStars = 5;
+}
+
+function makePost() {
+        let user = document.querySelector(".username").value;
+        let stars = ratedStars;
+        let review = document.querySelector("textarea").value;
+        let ratings = JSON.parse(localStorage.getItem("ratingSystem_" + item.displayName));
+
+        console.log(ratings);
+        console.log(reviews);
+
+        if(user != "" && review != "") {
+                if(ratings == null) {;
+                        ratings = {"averageRating": stars, "reviews": [{ 'user': user, 'stars': stars, 'review': review }]};
+                }
+                else {
+                        ratings.averageRating = (ratings.averageRating + stars) / 2;
+                        ratings.reviews.push({ 'user': user, 'stars': stars, 'review': review });
+                }
+        
+                localStorage.setItem("ratingSystem_" + item.displayName, JSON.stringify(ratings));
+        
+                $.ajax({
+                        type: "POST",
+                        url: "https://pedro.cs.herts.ac.uk/mm18afv/public/aws/submitReview.php",
+                        data: ratings,
+                        success: (function(data) {
+                                        console.log( "success " + data );
+                                        alert(data); 
+                                }),
+                        
+                        dataType: "JSON"
+        
+                });
+        
+                modal.style.display = "none";
+        }
+
+        
+}
+
+function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+}
+
+// function that puts the stars corresponding to the rating
+function getRating(rating) {
+        ratingHTML = '';
+        console.log(rating);
+        switch(rating) {
+            case 0: ratingHTML = '<span class="fa fa-star"></span>';
+                    ratingHTML += '<span class="fa fa-star"></span>';
+                    ratingHTML += '<span class="fa fa-star"></span>';
+                    ratingHTML += '<span class="fa fa-star"></span>';
+                    ratingHTML += '<span class="fa fa-star"></span>';
+                    break;
+            case 1: ratingHTML = '<span class="fa fa-star checked"></span>';
+                    ratingHTML += '<span class="fa fa-star"></span>';
+                    ratingHTML += '<span class="fa fa-star"></span>';
+                    ratingHTML += '<span class="fa fa-star"></span>';
+                    ratingHTML += '<span class="fa fa-star"></span>';
+                    break;
+            case 2: ratingHTML = '<span class="fa fa-star checked"></span>';
+                    ratingHTML += '<span class="fa fa-star checked"></span>';
+                    ratingHTML += '<span class="fa fa-star"></span>';
+                    ratingHTML += '<span class="fa fa-star"></span>';
+                    ratingHTML += '<span class="fa fa-star"></span>';
+                    break;
+            case 3: ratingHTML = '<span class="fa fa-star checked"></span>';
+                    ratingHTML += '<span class="fa fa-star checked"></span>';
+                    ratingHTML += '<span class="fa fa-star checked"></span>';
+                    ratingHTML += '<span class="fa fa-star"></span>';
+                    ratingHTML += '<span class="fa fa-star"></span>';
+                    break;
+            case 4: ratingHTML = '<span class="fa fa-star checked"></span>';
+                    ratingHTML += '<span class="fa fa-star checked"></span>';
+                    ratingHTML += '<span class="fa fa-star checked"></span>';
+                    ratingHTML += '<span class="fa fa-star checked"></span>';
+                    ratingHTML += '<span class="fa fa-star"></span>';
+                    break;
+            case 5: ratingHTML = '<span class="fa fa-star checked"></span>';
+                    ratingHTML += '<span class="fa fa-star checked"></span>';
+                    ratingHTML += '<span class="fa fa-star checked"></span>';
+                    ratingHTML += '<span class="fa fa-star checked"></span>';
+                    ratingHTML += '<span class="fa fa-star checked"></span>';
+                    break;
+            default:
+                    ratingHTML = '<span class="fa fa-star"></span>';
+                    ratingHTML += '<span class="fa fa-star"></span>';
+                    ratingHTML += '<span class="fa fa-star"></span>';
+                    ratingHTML += '<span class="fa fa-star"></span>';
+                    ratingHTML += '<span class="fa fa-star"></span>';
+        }
+    
+        return ratingHTML;
+}

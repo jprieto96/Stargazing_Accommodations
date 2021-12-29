@@ -36,7 +36,7 @@ elemHTML += '</div>';
 // Iterate through each element of the JSON to create a bootstrap card for each one
 elemHTML += '<div class="card-list">';
 for(let item of dataJSON.itemNames) {
-    elemHTML += '<div class="card text-center border-info mb-3">';
+    elemHTML += '<div class="card text-center border-info mb-3 card-item">';
     // For the list page I just show the first image of each element of the list
     elemHTML += '<img src=' + dataJSON[item].image[0] + ' class="card-img-top" alt=' + dataJSON[item].displayName + '>';
     elemHTML += '<div class="card-body">';
@@ -44,9 +44,19 @@ for(let item of dataJSON.itemNames) {
     elemHTML += '<p id="area" class="card-text">' + dataJSON[item].area + '</p>';
     elemHTML += '</div>';   
     elemHTML += '<ul class="list-group list-group-flush">';
-    elemHTML += '<li class="list-group-item">' + dataJSON[item].Address + '</li>';
-    elemHTML += '<li class="list-group-item">' + dataJSON[item].postCode + '</li>';
-    elemHTML += '<li class="list-group-item">' + dataJSON[item].tags + '</li>';
+    elemHTML += '<li class="list-group-item address">' + dataJSON[item].Address + '</li>';
+    elemHTML += '<li class="list-group-item postCode">' + dataJSON[item].postCode + '</li>';
+    elemHTML += '<li class="list-group-item tags">' + dataJSON[item].tags + '</li>';
+    elemHTML += '<li class="list-group-item facilities">' + dataJSON[item].facilities + '</li>';
+
+    var ls = JSON.parse(localStorage.getItem("ratingSystem_" + dataJSON[item].displayName));
+    if(ls != null) {
+        elemHTML += '<li class="list-group-item rating">' + getRating(ls.averageRating) + '</li>';
+    }
+    else {
+        elemHTML += '<li class="list-group-item rating">' + getRating(dataJSON[item].averageRating) + '</li>';
+    }
+
     elemHTML += '</ul>';
     elemHTML += '<div class="card-body">';
     // I pass the item name to showDetail function
@@ -129,8 +139,70 @@ function getAllValuesToFilter() {
 
 // Function to reset the filters
 function resetSelects() {
+    // iterate all the selects
     for(let field of dataJSON.filterFields) {
         let id = field[0];
         $('#' + id).val($('#' + id + ' option:first').val());
+
+        let cards = $('div').filter('.card-item');
+
+        // display all of them again to block
+        for(var i = 0; i < cards.length; i++) {
+            let card = cards[i];
+            card.style.display = 'block';
+        }
     }
+    document.getElementById("no-items").style.display = 'none';
+}
+
+// function that puts the stars corresponding to the rating
+function getRating(rating) {
+    ratingHTML = '';
+    console.log(rating);
+    switch(rating) {
+        case 0: ratingHTML = '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                break;
+        case 1: ratingHTML = '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                break;
+        case 2: ratingHTML = '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                break;
+        case 3: ratingHTML = '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                break;
+        case 4: ratingHTML = '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                break;
+        case 5: ratingHTML = '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star checked"></span>';
+                ratingHTML += '<span class="fa fa-star checked"></span>';
+                break;
+        default:
+                ratingHTML = '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+                ratingHTML += '<span class="fa fa-star"></span>';
+    }
+
+    return ratingHTML;
 }

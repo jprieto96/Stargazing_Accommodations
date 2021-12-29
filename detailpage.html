@@ -5,6 +5,7 @@
 
     <title>Stargazing Accommodations</title>
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&family=Montserrat&family=Sacramento&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
@@ -14,6 +15,9 @@
 
     <!-- Adding a icon to the web page -->
     <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+
+    <!-- Add icon library for rating stars -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
     <!-- Bootstrap link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -26,11 +30,18 @@
     <!-- Added Leaflet to include embeded maps -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <!-- Geolocation leaflet -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+    <!-- Fullscreen mode leaflet -->
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
 
     <!-- script that contains the list of accommodations -->
     <script type="text/javascript" src="scripts/accommodations.js"></script>
+
+    <!-- References to jQuery scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
   </head>
   <body>
@@ -58,16 +69,48 @@
     </header>
     
     <div class="container">
-      <div id="container" class="card-container"></div>
+      <div class="card-container"></div>
       <h1 class="lines-effect">Location Map</h1>
+      <br>
       <div id="map" class="map-container"></div>
-    </div>
+      <h1 class="lines-effect">Reviews</h1>
+      <br>
+      <div class="review-container container-fluid px-0 py-5 mx-auto"></div>
 
-    <footer id="footer">
-      <div class="bottom-container bg-dark text-white">
-        <p class="copyright">© 2021 Stargazing Accommodations</p>
+      <div id="reviewModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="post">
+          <div class="text">Thanks for rating us!</div>
+          <div class="edit">EDIT</div>
+        </div>
+        <div class="star-widget">
+          <input onclick="javascript:fiveStars()" class="star" type="radio" name="rate" id="rate-5">
+          <label for="rate-5" class="fas fa-star"></label>
+          <input onclick="javascript:fourStars()" class="star" type="radio" name="rate" id="rate-4">
+          <label for="rate-4" class="fas fa-star"></label>
+          <input onclick="javascript:threeStars()" class="star" type="radio" name="rate" id="rate-3">
+          <label for="rate-3" class="fas fa-star"></label>
+          <input onclick="javascript:twoStars()" class="star" type="radio" name="rate" id="rate-2">
+          <label for="rate-2" class="fas fa-star"></label>
+          <input onclick="javascript:oneStar()" class="star" type="radio" name="rate" id="rate-1">
+          <label for="rate-1" class="fas fa-star"></label>
+          <form action="" method="post">
+            <header></header>
+            <div class="input">
+              <input class="username" type="text" placeholder="Your name"></input>
+            </div>
+            <div class="textarea">
+              <textarea cols="30" placeholder="Describe your experience.."></textarea>
+            </div>
+            <div class="btn">
+              <button onclick="javascript:makePost()" type="submit">Send</button>
+            </div>
+          </form>
+        </div>
       </div>
-    </footer>
+      
+
+    </div>
 
     <!-- script that generate the list of accommodations -->
     <script type="text/javascript" src="scripts/detailAccommodation.js"></script>
