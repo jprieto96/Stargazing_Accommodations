@@ -94,7 +94,7 @@ review_HTML += '<div class="d-flex row py-5 px-5 bg-light">';
 review_HTML += '<div id="tabOverallRating" class="p-2 px-3 mx-2">';
 review_HTML += '<p class="sm-text mb-0">OVERALL RATING</p>';
 if(ls != null) {
-        review_HTML += '<h4>' + ls.averageRating + '</h4>';
+        review_HTML += '<h4>' + ls.averageRating.toFixed(2) + '</h4>';
 }
 else {
         review_HTML += '<h4>' + item.averageRating + '</h4>';
@@ -118,9 +118,11 @@ var positiveReviews = 0;
 for(var i = 0; i < reviews.length; i++) {
         if(reviews[i].stars > 3) ++positiveReviews;
 }
-var per = (positiveReviews / reviews.length) * 100;
 
-review_HTML += '<h4 id="textPositiveReviews">' + per + '%</h4>';
+var per = 0;
+if(reviews.length > 0) per = (positiveReviews / reviews.length) * 100;
+
+review_HTML += '<h4 id="textPositiveReviews">' + per.toFixed() + '%</h4>';
 review_HTML += '</div>';
 review_HTML += '<div class="ml-md-auto p-2 mx-md-2 pt-4 pt-md-3"> <button id="writeReviewButton" class="btn btn-blue px-4 review-trigger">WRITE A REVIEW</button> </div>';
 review_HTML += '</div>';
@@ -152,6 +154,30 @@ if(ls != null && reviews.length > 0) {
 }
 
 review_element.innerHTML = review_HTML;
+
+// if we have data received from the server we show it in the modal
+var lsDataReceived = localStorage.getItem("dataReceived");
+var m  = document.getElementById("myModal");
+var textReceived = document.getElementById("textReceived");
+if(lsDataReceived != null) {
+        var jsonData = JSON.parse(lsDataReceived);
+        var item = jsonData.item;
+        var user = jsonData.user;
+        var rating = jsonData.stars;
+        var review = jsonData.review;
+        textReceived.innerHTML = '<h4>Data received from the server</h4>'
+                        + '<p><b><i>' + user + '</b></i> has rated <b><i>' + item + '</b></i> with <b><i>' + rating + '</b></i> stars and with the following review: <b><i>' + review + '</b></i></p>';
+        m.style.display = "block";
+        localStorage.removeItem("dataReceived");
+}
+
+// Get the <span> element that closes the modal
+var closeModal = document.getElementById("closeModal");
+
+// When the user clicks on <span> (x), close the modal
+closeModal.onclick = function() {
+        m.style.display = "none";
+}
 
 var averageRating = 0;
 if(ls != null) {
@@ -194,6 +220,16 @@ reviewBtn.onclick = function() {
   modal.style.display = "flex";
 }
 
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+        if (event.target == modal) {
+                modal.style.display = "none";
+        }
+        else if (event.target == m) {
+                m.style.display = "none";
+        }
+}
+
 function oneStar() {
         ratedStars = 1;
 }
@@ -215,13 +251,10 @@ function fiveStars() {
 }
 
 function makePost() {
-        let user = document.querySelector(".username").value;
-        let stars = ratedStars;
-        let review = document.querySelector("textarea").value;
-        let ratings = JSON.parse(localStorage.getItem("ratingSystem_" + item.displayName));
-
-        console.log(ratings);
-        console.log(reviews);
+        var user = document.querySelector(".username").value;
+        var stars = ratedStars;
+        var review = document.querySelector("textarea").value;
+        var ratings = JSON.parse(localStorage.getItem("ratingSystem_" + item.displayName));
 
         if(user != "" && review != "") {
                 if(ratings == null) {;
@@ -233,19 +266,21 @@ function makePost() {
                 }
         
                 localStorage.setItem("ratingSystem_" + item.displayName, JSON.stringify(ratings));
+
+                var dataTosend = { 'item': item.displayName, 'user': user, 'stars': stars, 'review': review }
+
+                localStorage.setItem("dataReceived", JSON.stringify(dataTosend));
         
-                $.ajax({
-                        type: "POST",
-                        url: "https://pedro.cs.herts.ac.uk/mm18afv/public/aws/submitReview.php",
-                        data: ratings,
-                        success: (function(data) {
-                                        console.log( "success " + data );
-                                        alert(data); 
-                                }),
-                        
-                        dataType: "JSON"
-        
-                });
+                const sendPosrtToServer = async () => {
+                        return await $.ajax({
+                                type: "POST",
+                                url: "https://pedro.cs.herts.ac.uk/mm18afv/public/aws/submitReview.php",
+                                data: dataTosend,
+                                dataType: "json"
+                        });
+                } 
+
+                sendPosrtToServer.then(response => localStorage.setItem("dataReceived", response));
         
                 modal.style.display = "none";
         }

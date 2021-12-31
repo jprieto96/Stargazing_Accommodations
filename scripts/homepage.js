@@ -19,12 +19,12 @@ for(var item of dataJSON.itemNames) {
     var ls = JSON.parse(localStorage.getItem("ratingSystem_" + dataJSON[item].displayName));
     // If we have reviews, we show the number of reviews we have
     if(ls != null) {
+        console.log(ls.averageRating.toFixed());
         popupHTML += '<p>' + ls.reviews.length + ' reviews</p>';
-        popupHTML += '<p>' + getRating(ls.averageRating) + '</p>';
+        popupHTML += '<p>' + ls.averageRating.toFixed(2) + '/5 rating</p>';
     }
     else {
-        popupHTML += '<p>0 reviews</p>';
-        popupHTML += '<p>' + getRating(dataJSON[item].averageRating) + '</p>';
+        popupHTML += '<p>Not rated yet</p>';
     }
     
     popupHTML += '<button type="button" onclick=showDetail("' + item + '"); class="btn btn-primary">More details</button>'
@@ -77,58 +77,6 @@ elemHTML += '</div>' +
 
 // Introduce the carousel inside the container
 element.innerHTML = elemHTML;
-
-// function that puts the stars corresponding to the rating
-function getRating(rating) {
-    ratingHTML = '';
-    console.log(rating);
-    switch(rating) {
-        case 0: ratingHTML = '<span class="fa fa-star"></span>';
-                ratingHTML += '<span class="fa fa-star"></span>';
-                ratingHTML += '<span class="fa fa-star"></span>';
-                ratingHTML += '<span class="fa fa-star"></span>';
-                ratingHTML += '<span class="fa fa-star"></span>';
-                break;
-        case 1: ratingHTML = '<span class="fa fa-star checked"></span>';
-                ratingHTML += '<span class="fa fa-star"></span>';
-                ratingHTML += '<span class="fa fa-star"></span>';
-                ratingHTML += '<span class="fa fa-star"></span>';
-                ratingHTML += '<span class="fa fa-star"></span>';
-                break;
-        case 2: ratingHTML = '<span class="fa fa-star checked"></span>';
-                ratingHTML += '<span class="fa fa-star checked"></span>';
-                ratingHTML += '<span class="fa fa-star"></span>';
-                ratingHTML += '<span class="fa fa-star"></span>';
-                ratingHTML += '<span class="fa fa-star"></span>';
-                break;
-        case 3: ratingHTML = '<span class="fa fa-star checked"></span>';
-                ratingHTML += '<span class="fa fa-star checked"></span>';
-                ratingHTML += '<span class="fa fa-star checked"></span>';
-                ratingHTML += '<span class="fa fa-star"></span>';
-                ratingHTML += '<span class="fa fa-star"></span>';
-                break;
-        case 4: ratingHTML = '<span class="fa fa-star checked"></span>';
-                ratingHTML += '<span class="fa fa-star checked"></span>';
-                ratingHTML += '<span class="fa fa-star checked"></span>';
-                ratingHTML += '<span class="fa fa-star checked"></span>';
-                ratingHTML += '<span class="fa fa-star"></span>';
-                break;
-        case 5: ratingHTML = '<span class="fa fa-star checked"></span>';
-                ratingHTML += '<span class="fa fa-star checked"></span>';
-                ratingHTML += '<span class="fa fa-star checked"></span>';
-                ratingHTML += '<span class="fa fa-star checked"></span>';
-                ratingHTML += '<span class="fa fa-star checked"></span>';
-                break;
-        default:
-                ratingHTML = '<span class="fa fa-star"></span>';
-                ratingHTML += '<span class="fa fa-star"></span>';
-                ratingHTML += '<span class="fa fa-star"></span>';
-                ratingHTML += '<span class="fa fa-star"></span>';
-                ratingHTML += '<span class="fa fa-star"></span>';
-    }
-
-    return ratingHTML;
-}
 
 /* 
     function that is going to be called if the show details message is pressed

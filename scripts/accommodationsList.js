@@ -51,10 +51,10 @@ for(let item of dataJSON.itemNames) {
 
     var ls = JSON.parse(localStorage.getItem("ratingSystem_" + dataJSON[item].displayName));
     if(ls != null) {
-        elemHTML += '<li class="list-group-item rating">' + getRating(ls.averageRating) + '</li>';
+        elemHTML += '<li class="list-group-item rating">' + ls.averageRating.toFixed(2) + '/5 rating</li>';
     }
     else {
-        elemHTML += '<li class="list-group-item rating">' + getRating(dataJSON[item].averageRating) + '</li>';
+        elemHTML += '<li class="list-group-item rating">Not rated yet</li>';
     }
 
     elemHTML += '</ul>';

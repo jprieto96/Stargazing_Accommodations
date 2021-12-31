@@ -97,10 +97,10 @@
           <form action="" method="post">
             <header></header>
             <div class="input">
-              <input class="username" type="text" placeholder="Your name"></input>
+              <input class="username" type="text" placeholder="Your name" required></input>
             </div>
             <div class="textarea">
-              <textarea cols="30" placeholder="Describe your experience.."></textarea>
+              <textarea cols="30" placeholder="Describe your experience.." required></textarea>
             </div>
             <div class="btn">
               <button onclick="javascript:makePost()" type="submit">Send</button>
@@ -109,6 +109,14 @@
         </div>
       </div>
       
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span id="closeModal">&times;</span>
+          <p id="textReceived"></p>
+        </div>
+      </div>
 
     </div>
 
